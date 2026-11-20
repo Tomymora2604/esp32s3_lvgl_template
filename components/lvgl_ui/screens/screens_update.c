@@ -3,6 +3,10 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include "esp_log.h"
+#include "screens.h"
+#include "scr_home.h"
+#include "scr_system.h"
+#include "scr_settings.h"
 
 #define UPDATE_QUEUE_DEPTH 16
 
@@ -26,7 +30,18 @@ typedef void (*handler_fn_t)(void *data);
 #if UI_UPDATE_MAX == 0
 static const handler_fn_t s_handlers[] = { NULL };
 #else
+/* Accion del boton fisico segun la pantalla actual */
+static void handle_button(void *data)
+{
+    switch (ui_screens_get_current()) {
+    case SCREEN_HOME:     scr_home_refresh();              break;
+    case SCREEN_SYSTEM:   scr_system_reset_min_heap();     break;
+    case SCREEN_SETTINGS: scr_settings_restore_defaults(); break;
+    default: break;
+    }
+}
 static const handler_fn_t s_handlers[UI_UPDATE_MAX] = {
+        [UI_UPDATE_BUTTON] = handle_button,
     /* [UI_UPDATE_TEMPERATURE] = handle_temperature, */
 };
 #endif

@@ -18,6 +18,7 @@ extern lv_obj_t * ui_arcBattery;
 extern lv_obj_t * ui_lblBattery;
 extern lv_obj_t * ui_lblTemp;
 extern lv_obj_t * ui_lblUptime;
+extern lv_obj_t * ui_lblStatus;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

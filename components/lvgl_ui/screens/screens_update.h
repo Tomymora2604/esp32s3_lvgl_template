@@ -19,7 +19,9 @@ typedef enum {
     /* Add application-specific commands here, e.g.: */
     /* UI_UPDATE_TEMPERATURE, */
     /* UI_UPDATE_CONNECTION,  */
-    UI_UPDATE_MAX
+    
+        UI_UPDATE_BUTTON,
+        UI_UPDATE_MAX
 } ui_update_cmd_t;
 
 /** Initialize the update queue. Called once inside lvgl_ui_start(). */

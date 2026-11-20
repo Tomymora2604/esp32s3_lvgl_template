@@ -2,6 +2,7 @@
 #include "screens.h"
 #include "ui.h"
 #include "bsp_display.h"
+#include "navbar.h" 
 
 /* Animación de puntos: el valor va de 0 a 4 y elegimos el texto */
 static void dots_anim_cb(void *var, int32_t v)
@@ -30,6 +31,7 @@ void scr_splash_prepare(void)
 
 void scr_splash_init(void)
 {
+        navbar_set_active(-1);
     lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_var(&a, ui_lblDots);
@@ -50,7 +52,7 @@ void scr_splash_init(void)
 }
 
 void scr_splash_uninit(void)
-{
+{   
     lv_anim_del(ui_lblDots, dots_anim_cb);
     lv_anim_del(ui_scrSplash, backlight_anim_cb);
     bsp_display_set_brightness(100);

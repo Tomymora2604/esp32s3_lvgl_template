@@ -3,6 +3,8 @@
 #include "screens.h"
 #include "screens_update.h"
 #include "screens_timeout.h"
+#include "navbar.h"
+#include "button_input.h"
 
 #define UI_STEP_PERIOD_MS 20
 
@@ -20,7 +22,9 @@ void lvgl_ui_start(void)
     disp_timeout_init(TIMEOUT_NEVER, TIMEOUT_NEVER);
 
     ui_init();              /* Squareline: create all LVGL screen objects */
-    ui_screens_prepare();   /* call prepare() on every registered screen */
+    ui_screens_prepare();  
+        navbar_create();
+    button_input_init(); /* call prepare() on every registered screen */
 
     lv_timer_create(ui_step_timer_cb, UI_STEP_PERIOD_MS, NULL);
 }

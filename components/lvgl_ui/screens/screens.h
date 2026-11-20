@@ -12,6 +12,8 @@
 typedef enum {
     SCREEN_SPLASH = 0,
     SCREEN_HOME,
+        SCREEN_SYSTEM,
+    SCREEN_SETTINGS,
     SCREEN_MAX
 } ui_screens_t;
 

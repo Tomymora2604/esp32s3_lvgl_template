@@ -10,6 +10,7 @@ lv_obj_t * ui_arcBattery = NULL;
 lv_obj_t * ui_lblBattery = NULL;
 lv_obj_t * ui_lblTemp = NULL;
 lv_obj_t * ui_lblUptime = NULL;
+lv_obj_t * ui_lblStatus = NULL;
 // event funtions
 
 // build funtions
@@ -20,14 +21,18 @@ void ui_scrHome_screen_init(void)
     lv_obj_clear_flag(ui_scrHome, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_arcBattery = lv_arc_create(ui_scrHome);
-    lv_obj_set_width(ui_arcBattery, 120);
-    lv_obj_set_height(ui_arcBattery, 120);
+    lv_obj_set_width(ui_arcBattery, 100);
+    lv_obj_set_height(ui_arcBattery, 100);
+    lv_obj_set_x(ui_arcBattery, 0);
+    lv_obj_set_y(ui_arcBattery, -35);
     lv_obj_set_align(ui_arcBattery, LV_ALIGN_CENTER);
     lv_arc_set_value(ui_arcBattery, 0);
 
     ui_lblBattery = lv_label_create(ui_scrHome);
     lv_obj_set_width(ui_lblBattery, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblBattery, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_lblBattery, 0);
+    lv_obj_set_y(ui_lblBattery, -35);
     lv_obj_set_align(ui_lblBattery, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblBattery, "0%");
 
@@ -35,7 +40,7 @@ void ui_scrHome_screen_init(void)
     lv_obj_set_width(ui_lblTemp, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblTemp, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_lblTemp, 0);
-    lv_obj_set_y(ui_lblTemp, -95);
+    lv_obj_set_y(ui_lblTemp, 35);
     lv_obj_set_align(ui_lblTemp, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblTemp, "	Temp: --");
 
@@ -43,9 +48,17 @@ void ui_scrHome_screen_init(void)
     lv_obj_set_width(ui_lblUptime, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_lblUptime, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_lblUptime, 0);
-    lv_obj_set_y(ui_lblUptime, 95);
+    lv_obj_set_y(ui_lblUptime, 60);
     lv_obj_set_align(ui_lblUptime, LV_ALIGN_CENTER);
     lv_label_set_text(ui_lblUptime, "00:00:00");
+
+    ui_lblStatus = lv_label_create(ui_scrHome);
+    lv_obj_set_width(ui_lblStatus, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_lblStatus, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_lblStatus, 0);
+    lv_obj_set_y(ui_lblStatus, -100);
+    lv_obj_set_align(ui_lblStatus, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_lblStatus, "Normal");
 
 }
 
@@ -59,5 +72,6 @@ void ui_scrHome_screen_destroy(void)
     ui_lblBattery = NULL;
     ui_lblTemp = NULL;
     ui_lblUptime = NULL;
+    ui_lblStatus = NULL;
 
 }
